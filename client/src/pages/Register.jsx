@@ -1,27 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Add from "../img/addAvatar.png";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
 const Register = () => {
-  const handleSubmit = (e) => {
+  const [err, setErr] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
     // const file = e.target[3].file[0];
 
-    console.log(e.target[3].value);
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      setErr(true);
+    }
   };
 
   return (
@@ -39,6 +35,8 @@ const Register = () => {
             <span>Add an avatar</span>
           </label>
           <button>Sign up</button>
+          {/* If error occurs then present that error to the DOM */}
+          {err && <span>Something went wrong</span>}
         </form>
         <p>You do have an account? Login</p>
       </div>
