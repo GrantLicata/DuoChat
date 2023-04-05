@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth, storag, db } from "../firebase";
+import { auth, storage, db } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -16,33 +16,48 @@ const Register = () => {
   // Submission of user information for registration
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(e);
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
-    const file = e.target[3].file[0];
+    const file = e.target[3].files[0];
 
     try {
+      // Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
+      console.log("User creation:", res);
 
+      // Create a unique image name
       const storageRef = ref(storage, displayName);
+      console.log("Storage reference:", storageRef);
 
+      // Upload file and associate it with user's display name
       const uploadTask = uploadBytesResumable(storageRef, file);
+      console.log("Upload Task", uploadTask);
 
+      // Upload newly created user to the Firestore database with display name, email, and url to profile photo
       uploadTask.on(
         (error) => {
           setErr(true);
+          console.log("Generic upload task error:", error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            console.log("Get download initiated");
+            console.log("Download URL", downloadURL);
             await updateProfile(res.user, {
               displayName,
+              photoURL: downloadURL,
+            });
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
               photoURL: downloadURL,
             });
           });
         }
       );
-
-      await setDoc(doc(db, "users", res.user.uid));
     } catch (err) {
       setErr(true);
     }
