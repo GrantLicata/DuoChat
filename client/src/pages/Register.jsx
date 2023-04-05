@@ -31,33 +31,28 @@ const Register = () => {
       const storageRef = ref(storage, displayName);
       console.log("Storage reference:", storageRef);
 
-      // Upload file and associate it with user's display name
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      console.log("Upload Task", uploadTask);
-
       // Upload newly created user to the Firestore database with display name, email, and url to profile photo
-      uploadTask.on(
-        (error) => {
-          setErr(true);
-          console.log("Generic upload task error:", error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            console.log("Get download initiated");
-            console.log("Download URL", downloadURL);
+      await uploadBytesResumable(storageRef, file).then(() => {
+        getDownloadURL(storageRef).then(async (downloadURL) => {
+          try {
+            //Update profile
             await updateProfile(res.user, {
               displayName,
               photoURL: downloadURL,
             });
+            //create user on firestore
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
               email,
               photoURL: downloadURL,
             });
-          });
-        }
-      );
+          } catch (err) {
+            console.log(err);
+            setErr(true);
+          }
+        });
+      });
     } catch (err) {
       setErr(true);
     }
