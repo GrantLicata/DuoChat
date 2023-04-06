@@ -16,7 +16,6 @@ const Register = () => {
   // Submission of user information for registration
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e);
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
@@ -25,22 +24,20 @@ const Register = () => {
     try {
       // Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      console.log("User creation:", res);
 
       // Create a unique image name
       const storageRef = ref(storage, displayName);
-      console.log("Storage reference:", storageRef);
 
-      // Upload newly created user to the Firestore database with display name, email, and url to profile photo
+      // Upload created user to Firestore database
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
           try {
-            //Update profile
+            //Update update user profile with photo
             await updateProfile(res.user, {
               displayName,
               photoURL: downloadURL,
             });
-            //create user on firestore
+            //Create user on firestore database
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
