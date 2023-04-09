@@ -14,9 +14,9 @@ export const AuthContextProvider = ({ children }) => {
     });
 
     // Cleanup function to prevent memory leakage
-    return () => {
-      unsub();
-    };
+    // return () => {
+    //   unsub();
+    // };
   }, []);
 
   return (
