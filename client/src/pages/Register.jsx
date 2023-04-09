@@ -8,10 +8,12 @@ import {
 import { auth, storage, db } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   // Managing error states
   const [err, setErr] = useState(false);
+  const navigate = useNavigate();
 
   // Submission of user information for registration
   const handleSubmit = async (e) => {
@@ -44,8 +46,9 @@ const Register = () => {
               email,
               photoURL: downloadURL,
             });
-            // Create user chat collection
+            // Create user chat collection and navigate to home page
             await setDoc(doc(db, "userChats", res.user.uid), {});
+            navigate("/");
           } catch (err) {
             console.log(err);
             setErr(true);
