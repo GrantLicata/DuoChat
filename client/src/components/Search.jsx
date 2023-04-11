@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
+import { AuthContext } from "../context/AuthContext";
 
 const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
+
+  // Collect the user currently signed in
+  const { currentUser } = useContext(AuthContext);
 
   const handleSearch = async () => {
     // Query database for users that match the username state.
@@ -30,6 +34,19 @@ const Search = () => {
     e.code === "Enter" && handleSearch();
   };
 
+  const handleSelect = async () => {
+    // Check whether the group (chats in firestore) exists, if not create a new one
+    const combinedId =
+      currentUser.uid > user.uid
+        ? currentUser.uid + user.uid
+        : user.uid + currentUser.uid;
+    try {
+      const res = await getDocs(db, "chats", combinedId);
+    } catch (err) {}
+
+    // Create user chats
+  };
+
   return (
     <div className="search">
       <div className="searchForm">
@@ -44,7 +61,7 @@ const Search = () => {
       {err && <span>User not found!</span>}
       {/* User displayed if found within search */}
       {user && (
-        <div className="userChat">
+        <div className="userChat" onClick={handleSelect}>
           <img src={user.photoURL} alt="User profile image" />
           <div className="userChatInfo">
             <span>{user.displayName}</span>
