@@ -52,13 +52,14 @@ const Search = () => {
 
       if (!res.exists()) {
         // Create a chat in chats collection
-        await setDoc(doc, (db, "chats", combinedId), {
+        await setDoc(doc(db, "chats", combinedId), {
           messages: [],
         });
+
+        // Create user chats
+        await updateDoc(doc(db, "userChats", currentUser.uid));
       }
     } catch (err) {}
-
-    // Create user chats
   };
 
   return (

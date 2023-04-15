@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
+  // Collect user state information from context
   const { currentUser } = useContext(AuthContext);
 
   return (
