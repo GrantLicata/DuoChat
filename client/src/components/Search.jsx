@@ -60,7 +60,7 @@ const Search = () => {
           messages: [],
         });
 
-        // Create user chats
+        // Add target user to current users chat groups
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [combinedId + ".userInfo"]: {
             uid: user.uid,
@@ -70,7 +70,7 @@ const Search = () => {
           [combinedId + ".date"]: serverTimestamp(),
         });
 
-        // ....
+        // Update target users chat groups to include current user
         await updateDoc(doc(db, "userChats", user.uid), {
           [combinedId + ".userInfo"]: {
             uid: currentUser.uid,
