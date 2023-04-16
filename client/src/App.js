@@ -22,6 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Primary messaging page */}
         <Route path="/">
           <Route
             index
@@ -31,7 +32,11 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          {/* User Login page */}
           <Route path="login" element={<Login />} />
+
+          {/* User registration page */}
           <Route path="register" element={<Register />} />
         </Route>
       </Routes>
