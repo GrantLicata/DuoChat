@@ -8,6 +8,7 @@ const Chats = () => {
 
   // Collect the user currently signed in
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   // Get realtime list of chat groups associated with current user
   useEffect(() => {
