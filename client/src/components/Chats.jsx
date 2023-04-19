@@ -2,6 +2,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import React, { useState, useEffect, useContext } from "react";
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
 const Chats = () => {
   const [chats, setChats] = useState([]);
