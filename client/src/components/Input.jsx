@@ -11,6 +11,7 @@ const Input = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
+  // Managing the sending of text and images.
   const handleSend = () => {
     if (img) {
     } else {
