@@ -3,6 +3,9 @@ import Img from "../img/img.png";
 import Attach from "../img/attach.png";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+import { Timestamp, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { v4 as uuid } from "uuid";
 
 const Input = () => {
   const [text, setText] = useState("");
@@ -12,9 +15,17 @@ const Input = () => {
   const { data } = useContext(ChatContext);
 
   // Managing the sending of text and images.
-  const handleSend = () => {
+  const handleSend = async () => {
     if (img) {
     } else {
+      await updateDoc(doc(db, "chats", data.chatId), {
+        messages: arrayUnion({
+          id: uuid,
+          text,
+          senderId: currentUser.uid,
+          date: Timestamp.now(),
+        }),
+      });
     }
   };
 
