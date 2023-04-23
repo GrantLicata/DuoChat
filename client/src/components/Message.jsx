@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 
@@ -6,11 +6,19 @@ const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
+  // Reference hook brought into the application for auto scroll
+  const ref = useRef();
+
+  // Scroll to current conversation point upon sending a new message
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
   return (
     <div
       className={`message ${message.senderId === currentUser.uid && "owner"}`}
     >
-      <div className="messageInfo">
+      <div ref={ref} className="messageInfo">
         <img
           src={
             message.senderId === currentUser.uid
