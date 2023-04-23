@@ -57,7 +57,6 @@ const Input = () => {
       });
     }
 
-    //! Data is being sent into database as "undefined" and breaking the app.
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
@@ -81,6 +80,7 @@ const Input = () => {
         type="text"
         placeholder="Type something..."
         onChange={(e) => setText(e.target.value)}
+        value={text}
       />
       <div className="send">
         <img src={Attach} alt="Attach icon" />
