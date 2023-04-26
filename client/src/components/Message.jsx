@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+import { Timestamp } from "firebase/firestore";
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
+
+  // Generate timestamp to be placed with each message
+  const messageDate = message.date.toDate().toLocaleTimeString();
 
   // Reference hook brought into the application for auto scroll
   const ref = useRef();
@@ -27,7 +31,7 @@ const Message = ({ message }) => {
           }
           alt="Message image"
         />
-        <span>just now</span>
+        <span>{messageDate}</span>
       </div>
       <div className="messageContent">
         <p>{message.text}</p>
