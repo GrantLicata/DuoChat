@@ -83,6 +83,7 @@ const Search = () => {
       }
     } catch (err) {}
 
+    // Clear state of search query.
     setUser(null);
     setUsername("");
   };
