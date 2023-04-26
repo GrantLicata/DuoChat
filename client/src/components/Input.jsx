@@ -83,7 +83,7 @@ const Input = () => {
         value={text}
       />
       <div className="send">
-        <img src={Attach} alt="Attach icon" />
+        {/* <img src={Attach} alt="Attach icon" /> */}
         <input
           type="file"
           style={{ display: "none" }}

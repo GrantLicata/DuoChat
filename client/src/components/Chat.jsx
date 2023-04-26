@@ -13,11 +13,12 @@ const Chat = () => {
     <div className="chat">
       <div className="chatInfo">
         <span>{data.user?.displayName}</span>
-        <div className="chatIcons">
+        {/* //ToDo: Create functionality for the elements below. */}
+        {/* <div className="chatIcons">
           <img src={Cam} alt="Camera icon" />
           <img src={Add} alt="Add friend icon" />
           <img src={More} alt="More menu items icon" />
-        </div>
+        </div> */}
       </div>
       <Messages />
       <Input />
