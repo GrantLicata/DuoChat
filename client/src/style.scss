@@ -92,7 +92,7 @@
 
 .home {
   background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
-  background-color: #263238;
+  background-color: #26323898;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -232,9 +232,9 @@
 
       .messages {
         background-color: #ddddf7;
-        padding: 10px;
-        height: calc(100% - 160px);
-        overflow: scroll;
+        padding: 20px;
+        height: calc(100% - 180px);
+        overflow: auto;
 
         .message {
           display: flex;
@@ -288,7 +288,7 @@
       }
 
       .input {
-        height: 50px;
+        height: 70px;
         background-color: white;
         padding: 10px;
         display: flex;
