@@ -5,9 +5,15 @@ import More from "../img/more.png";
 import Messages from "./Messages";
 import Input from "./Input";
 import { ChatContext } from "../context/ChatContext";
+import { signOut } from "firebase/auth";
+import { AuthContext } from "../context/AuthContext";
+import { auth } from "../firebase";
 
 const Chat = () => {
   const { data } = useContext(ChatContext);
+
+  // Collect user state information from context
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <div className="chat">
@@ -19,6 +25,11 @@ const Chat = () => {
           <img src={Add} alt="Add friend icon" />
           <img src={More} alt="More menu items icon" />
         </div> */}
+
+        {/* //Todo: Update styling for code below to be placed in upper chat bar */}
+        {/* <img src={currentUser.photoURL} alt="User profile photo" />
+        <span>{currentUser.displayName}</span>
+        <button onClick={() => signOut(auth)}>Logout</button> */}
       </div>
       <Messages />
       <Input />
