@@ -3,6 +3,7 @@ import Add from "../img/addAvatar.png";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import Header from "../img/header.png";
 
 const Login = () => {
   // Managing error states
@@ -26,7 +27,7 @@ const Login = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">DuoChat</span>
+        <img src={Header} alt="Header image" className="logo" />
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />

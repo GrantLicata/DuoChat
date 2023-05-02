@@ -38,5 +38,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Primary client folder for DuoChat",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "keywords": []
 }
