@@ -8,7 +8,8 @@ const Message = ({ message }) => {
   const { data } = useContext(ChatContext);
 
   // Generate timestamp to be placed with each message
-  const messageDate = message.date.toDate().toLocaleTimeString();
+  const messageDate = message.date.toDate().toLocaleTimeString().slice(3);
+  console.log(messageDate);
 
   // Reference hook brought into the application for auto scroll
   const ref = useRef();
