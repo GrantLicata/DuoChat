@@ -1,3 +1,11 @@
+// Color scheme settings
+$first_color: #27233a;
+$second_color: #505168;
+$third_color: #b3c0a4;
+$fourth_color: #eaefd3;
+$fifth_color: #dcc48e;
+
+// Media query settings
 @mixin mobile {
   @media screen and (max-width: 480px) {
     @content;
@@ -19,7 +27,7 @@
 }
 
 .formContainer {
-  background-color: #a7bcff;
+  background-color: $second_color;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -94,7 +102,7 @@
 }
 
 .home {
-  background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
+  // background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
   background-color: #26323898;
   height: 100vh;
   display: flex;
