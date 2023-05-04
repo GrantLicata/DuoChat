@@ -30,6 +30,15 @@ const Chats = () => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };
 
+  const handleTextPreview = (input) => {
+    let message = input.lastMessage?.text;
+    if (message.length > 20) {
+      return message.slice(0, 20) + "...";
+    } else {
+      return message;
+    }
+  };
+
   return (
     <div className="chats">
       {Object.entries(chats)
@@ -43,7 +52,7 @@ const Chats = () => {
             <img src={chat[1].userInfo.photoURL} alt="User profile image" />
             <div className="userChatInfo">
               <span>{chat[1].userInfo.displayName}</span>
-              <p>{chat[1].lastMessage?.text}</p>
+              <p>{handleTextPreview(chat[1])}</p>
             </div>
           </div>
         ))}
