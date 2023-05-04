@@ -129,14 +129,17 @@ $fifth_color: #dcc48e;
 
       .logoutButton {
         background-color: #ddddf7;
-        // color: rgb(70, 70, 70);
+        color: rgb(70, 70, 70);
         border: none;
         border-radius: 2px;
-        padding: 4px 6px 4px 6px;
+        padding: 10px;
         position: absolute;
         bottom: 0;
         margin-bottom: 10px;
         margin-left: 10px;
+        @include mobile {
+          padding: 8px;
+        }
       }
 
       .navbar {
@@ -157,12 +160,16 @@ $fifth_color: #dcc48e;
 
         .user {
           display: flex;
+          align-items: center;
           gap: 10px;
+          // background-color: gray;
+          // border-radius: 10px;
+          // padding: 3px;
 
           img {
             background-color: #ddddf7;
-            height: 24px;
-            width: 24px;
+            height: 28px;
+            width: 28px;
             border-radius: 50%;
             object-fit: cover;
           }
