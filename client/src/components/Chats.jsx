@@ -1,8 +1,9 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useState, useEffect, useContext } from "react";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+import { signOut } from "firebase/auth";
 
 const Chats = () => {
   const [chats, setChats] = useState([]);
@@ -41,6 +42,7 @@ const Chats = () => {
 
   return (
     <div className="chats">
+      {/* Build chat list within sidebar */}
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)
         .map((chat) => (
@@ -56,6 +58,10 @@ const Chats = () => {
             </div>
           </div>
         ))}
+      {/* Sign user out of application */}
+      <button className="logoutButton" onClick={() => signOut(auth)}>
+        Logout
+      </button>
     </div>
   );
 };

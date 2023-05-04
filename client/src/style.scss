@@ -127,6 +127,18 @@ $fifth_color: #dcc48e;
       background-color: #3e3c61;
       position: relative;
 
+      .logoutButton {
+        background-color: #ddddf7;
+        // color: rgb(70, 70, 70);
+        border: none;
+        border-radius: 2px;
+        padding: 4px 6px 4px 6px;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+
       .navbar {
         display: flex;
         align-items: center;
@@ -220,6 +232,13 @@ $fifth_color: #dcc48e;
         }
       }
     }
+
+    .chatContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .chat {
       flex: 2;
 
