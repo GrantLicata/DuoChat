@@ -18,7 +18,9 @@ const Chat = () => {
   return (
     <div className="chat">
       <div className="chatInfo">
-        <span>To: {data.user?.displayName}</span>
+        <p>
+          To: <span className="subjectName">{data.user?.displayName}</span>
+        </p>
         {/* //ToDo: Create functionality for the elements below. */}
         {/* <div className="chatIcons">
           <img src={Cam} alt="Camera icon" />
