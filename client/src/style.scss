@@ -114,10 +114,11 @@ $fifth_color: #dcc48e;
   .container {
     // border: 1px solid white;
     border-radius: 10px;
-    width: 65%;
+    width: 80%;
     height: 80%;
     display: flex;
     overflow: hidden;
+    max-width: 1100px;
     @include tablet {
       width: 90%;
     }

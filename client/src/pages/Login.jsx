@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Add from "../img/addAvatar.png";
 import { useNavigate, Link } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../firebase";
 import Header from "../img/header.png";
 
@@ -10,7 +15,7 @@ const Login = () => {
   const [err, setErr] = useState(false);
   const navigate = useNavigate();
 
-  // Submission of user information for registration
+  // Sign in the user
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
@@ -24,6 +29,14 @@ const Login = () => {
     }
   };
 
+  //Todo - Complete functionality
+  // Signs-in Friendly Chat.
+  async function signIn() {
+    // Sign in Firebase using popup auth and Google as the identity provider.
+    var provider = new GoogleAuthProvider();
+    await signInWithPopup(getAuth(), provider);
+  }
+
   return (
     <div className="formContainer">
       <div className="formWrapper">
@@ -35,6 +48,7 @@ const Login = () => {
           <button>Sign in</button>
           {/* If error occurs then present that error to the DOM */}
           {err && <span>Something went wrong</span>}
+          <button onClick={signIn}>Sign in with Google</button>
         </form>
         <p>
           You don't have an account? <Link to="/register">Register</Link>
