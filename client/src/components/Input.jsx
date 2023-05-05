@@ -21,16 +21,15 @@ const Input = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
-  // Managing the sending of text and images.
+  // Sending texts and images
   const handleSend = async () => {
     if (img) {
       const storageRef = ref(storage, uuid());
-
       const uploadTask = uploadBytesResumable(storageRef, img);
 
       uploadTask.on(
         (error) => {
-          //TODO:Handle Error
+          console.log(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -73,6 +72,11 @@ const Input = () => {
     setText("");
     setImg(null);
   };
+
+  // Evaluate key press for the "enter" key
+  // const handleKey = (e) => {
+  //   e.code === "Enter" && handleSend();
+  // };
 
   return (
     <div className="input">
