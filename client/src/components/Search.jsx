@@ -21,11 +21,11 @@ const Search = () => {
   // Collect the user currently signed in
   const { currentUser } = useContext(AuthContext);
 
-  const handleSearch = async () => {
+  const handleSearch = async (typedUser) => {
     // Query database for users that match the username state.
     const q = query(
       collection(db, "users"),
-      where("displayName", "==", username)
+      where("displayName", "==", typedUser)
     );
     try {
       // Get database document that matches the query and set that as the user identified within the search.
@@ -80,7 +80,9 @@ const Search = () => {
           [combinedId + ".date"]: serverTimestamp(),
         });
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
 
     // Clear state of search query.
     setUser(null);
@@ -93,8 +95,11 @@ const Search = () => {
         <input
           type="text"
           placeholder="Find a user"
+          onChange={(e) => {
+            setUsername(e.target.value);
+            handleSearch(e.target.value);
+          }}
           onKeyDown={handleKey}
-          onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
       </div>
@@ -102,7 +107,7 @@ const Search = () => {
       {err && <span>User not found!</span>}
       {/* User displayed if found within search */}
       {user && (
-        <div className="userChat" onClick={handleSelect}>
+        <div className="userSearch" onClick={handleSelect}>
           <img src={user.photoURL} alt="User profile image" />
           <div className="userChatInfo">
             <span>{user.displayName}</span>

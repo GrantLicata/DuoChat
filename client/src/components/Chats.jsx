@@ -18,6 +18,7 @@ const Chats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         setChats(doc.data());
       });
+      console.log(chats);
       return () => {
         unsub();
       };
@@ -33,7 +34,11 @@ const Chats = () => {
 
   const handleTextPreview = (input) => {
     let message = input.lastMessage?.text;
-    if (message.length > 20) {
+    console.log(message);
+    // return message;
+    if (message === undefined) {
+      return "";
+    } else if (message.length > 20) {
       return message.slice(0, 20) + "...";
     } else {
       return message;

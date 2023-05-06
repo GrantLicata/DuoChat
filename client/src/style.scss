@@ -246,6 +246,43 @@ $fifth_color: #dcc48e;
           }
         }
       }
+
+      .userSearch {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: black;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e8e8f7;
+          border: none;
+          border-radius: 10px;
+        }
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+          @include tablet {
+            height: 28px;
+            width: 28px;
+          }
+        }
+
+        .userChatInfo {
+          span {
+            font-size: 18px;
+            font-weight: 500;
+          }
+          p {
+            font-size: 14px;
+            color: lightgray;
+          }
+        }
+      }
     }
 
     .chatContainer {
