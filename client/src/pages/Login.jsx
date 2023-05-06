@@ -52,11 +52,15 @@ const Login = () => {
           <input type="password" placeholder="password" />
           <button>Sign in</button>
           {/* If error occurs then present that error to the DOM */}
-          {error && <span>Something went wrong</span>}
+          {error && (
+            <span style={{ textAlign: "center", color: "red" }}>
+              Something went wrong
+            </span>
+          )}
         </form>
         {/* <button onClick={signIn}>Continue with Google</button> */}
         <p>
-          You don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

@@ -73,14 +73,14 @@ const Register = () => {
           <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="avatar image" />
-            <span>Add an avatar</span>
+            <span>Add profile image</span>
           </label>
           <button>Sign up</button>
           {/* If error occurs then present that error to the DOM */}
           {err && <span>Something went wrong</span>}
         </form>
         <p>
-          You do have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>

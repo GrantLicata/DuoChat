@@ -104,7 +104,6 @@ $fifth_color: #dcc48e;
 }
 
 .home {
-  // background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
   background-color: #2632383d;
   height: 100vh;
   display: flex;
@@ -112,7 +111,6 @@ $fifth_color: #dcc48e;
   justify-content: center;
 
   .container {
-    // border: 1px solid white;
     border-radius: 10px;
     width: 80%;
     height: 80%;
@@ -231,6 +229,10 @@ $fifth_color: #dcc48e;
           height: 50px;
           border-radius: 50%;
           object-fit: cover;
+          @include tablet {
+            height: 28px;
+            width: 28px;
+          }
         }
 
         .userChatInfo {
