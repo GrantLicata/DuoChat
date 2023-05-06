@@ -12,7 +12,7 @@ import Header from "../img/header.png";
 
 const Login = () => {
   // Managing error states
-  const [err, setErr] = useState(false);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   // Sign in the user
@@ -24,18 +24,23 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
-    } catch (err) {
-      setErr(true);
+    } catch (error) {
+      setError(true);
+      console.log(error);
     }
   };
 
-  //Todo - Complete functionality
-  // Signs-in Friendly Chat.
-  async function signIn() {
-    // Sign in Firebase using popup auth and Google as the identity provider.
-    var provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuth(), provider);
-  }
+  //Todo - Future Google Auth functionality
+  // async function signIn() {
+  //   // Sign in Firebase using popup auth and Google as the identity provider.
+  //   let provider = new GoogleAuthProvider();
+  //   try {
+  //     await signInWithPopup(getAuth(), provider);
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   return (
     <div className="formContainer">
@@ -47,9 +52,9 @@ const Login = () => {
           <input type="password" placeholder="password" />
           <button>Sign in</button>
           {/* If error occurs then present that error to the DOM */}
-          {err && <span>Something went wrong</span>}
-          <button onClick={signIn}>Sign in with Google</button>
+          {error && <span>Something went wrong</span>}
         </form>
+        {/* <button onClick={signIn}>Continue with Google</button> */}
         <p>
           You don't have an account? <Link to="/register">Register</Link>
         </p>

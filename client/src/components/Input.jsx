@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import Img from "../img/img.png";
-import Attach from "../img/attach.png";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import {
@@ -74,9 +73,9 @@ const Input = () => {
   };
 
   // Evaluate key press for the "enter" key
-  // const handleKey = (e) => {
-  //   e.code === "Enter" && handleSend();
-  // };
+  const handleKey = (e) => {
+    e.code === "Enter" && handleSend();
+  };
 
   return (
     <div className="input">

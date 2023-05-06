@@ -45,7 +45,6 @@ const Search = () => {
     e.code === "Enter" && handleSearch();
   };
 
-  //! See video at time stamp 2:05:22 for note on additional code needed here.
   const handleSelect = async () => {
     // Check whether the group (chats in firestore) exists, if not create a new one
     const combinedId =
