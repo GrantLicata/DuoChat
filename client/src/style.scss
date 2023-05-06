@@ -295,7 +295,7 @@ $fifth_color: #dcc48e;
       flex: 2;
 
       .chatInfo {
-        height: 50px;
+        height: 46px;
         background-color: #5d5b8d;
         display: flex;
         align-items: center;
@@ -410,6 +410,7 @@ $fifth_color: #dcc48e;
 
           button {
             border: none;
+            border-radius: 2px;
             padding: 10px 15px;
             color: white;
             background-color: #8da4f1;
