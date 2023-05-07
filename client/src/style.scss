@@ -402,17 +402,42 @@ $fifth_color: #dcc48e;
         align-items: center;
         justify-content: space-between;
 
-        input {
-          width: 100%;
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+
+        .input-sizer {
+          display: inline-grid;
+          vertical-align: top;
+          align-items: center;
+          position: relative;
+          border: solid 1px;
+          padding: 2px;
+          margin: 0px;
           border: none;
           outline: none;
           color: #2f2d52;
           font-size: 18px;
+          width: 100%;
+          resize: none;
 
           &::placeholder {
             color: lightgray;
           }
         }
+        // input {
+        //   width: 100%;
+        //   border: none;
+        //   outline: none;
+        //   color: #2f2d52;
+        //   font-size: 18px;
+
+        //   &::placeholder {
+        //     color: lightgray;
+        //   }
+        // }
 
         .send {
           display: flex;

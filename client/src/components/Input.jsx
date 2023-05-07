@@ -79,8 +79,9 @@ const Input = () => {
 
   return (
     <div className="input">
-      <input
+      <textarea
         type="text"
+        className="input-sizer"
         placeholder="Type something..."
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKey}
