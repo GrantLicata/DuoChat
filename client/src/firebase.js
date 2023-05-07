@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import { getAnalytics } from "firebase/analytics";
 
 //Configure application
 const firebaseConfig = {
@@ -17,6 +18,9 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const storage = getStorage();
+
+// Initialize Google analytics functionality
+const analytics = getAnalytics(app);
 
 // Initialize Firestore database
 export const db = getFirestore(app);
