@@ -75,7 +75,7 @@ const Register = () => {
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
           try {
-            // Update update user profile with photo
+            // Update user profile with photo
             await updateProfile(res.user, {
               displayName,
               photoURL: downloadURL,
