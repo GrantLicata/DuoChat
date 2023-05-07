@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import Add from "../img/addAvatar.png";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
@@ -13,8 +9,52 @@ import Header from "../img/header.png";
 
 const Register = () => {
   // Managing error states
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(null);
+  const [selectedFile, setSelectedFile] = useState();
+  const [errorMsg, setErrorMsg] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
+
+  // Handle file state population for eventual submission
+  // const handleFile = (event) => {
+  //   //! This isn't working. Somehow the image file isn't being added to state.
+  //   console.log(event.target.files[0]);
+  //   if (event.target.files) {
+  //     setSelectedFile(event.target.files[0]);
+  //   }
+  //   validateSelectedFile();
+  // };
+
+  // Validate the file size before submission
+  // const validateSelectedFile = () => {
+  //   const MIN_FILE_SIZE = 1024; // 1MB
+  //   const MAX_FILE_SIZE = 5120; // 5MB
+
+  //   console.log("Image file result", selectedFile);
+
+  //   if (!selectedFile) {
+  //     setErrorMsg("Please choose a file");
+  //     setIsSuccess(false);
+  //     return;
+  //   }
+
+  //   const fileSizeKiloBytes = selectedFile.size / 1024;
+  //   console.log("Image file size", fileSizeKiloBytes);
+
+  //   if (fileSizeKiloBytes < MIN_FILE_SIZE) {
+  //     setErrorMsg("File size is less than minimum limit");
+  //     setIsSuccess(false);
+  //     return;
+  //   }
+  //   if (fileSizeKiloBytes > MAX_FILE_SIZE) {
+  //     setErrorMsg("File size is greater than maximum limit");
+  //     setIsSuccess(false);
+  //     return;
+  //   }
+
+  //   setErrorMsg("");
+  //   setIsSuccess(true);
+  // };
 
   // Submission of user information for registration
   const handleSubmit = async (e) => {
@@ -70,11 +110,23 @@ const Register = () => {
           <input type="text" placeholder="display name" />
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
-          <input style={{ display: "none" }} type="file" id="file" />
+          {/* //todo: Create password validation */}
+          <input
+            style={{ display: "none" }}
+            // onChange={handleFile}
+            type="file"
+            id="file"
+          />
           <label htmlFor="file">
             <img src={Add} alt="avatar image" />
             <span>Add profile image</span>
+            <p></p>
           </label>
+          {/* File validation messaging */}
+          {isSuccess ? (
+            <p className="successMessage">Validation successful</p>
+          ) : null}
+          {errorMsg ? <p className="errorMessage">{errorMsg}</p> : null}
           <button>Sign up</button>
           {/* If error occurs then present that error to the DOM */}
           {err && <span>Something went wrong</span>}

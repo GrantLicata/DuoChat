@@ -94,6 +94,22 @@ $fifth_color: #dcc48e;
           width: 32px;
         }
       }
+
+      .successMessage {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: green;
+        font-size: 12px;
+      }
+
+      .errorMessage {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: red;
+        font-size: 12px;
+      }
     }
     p {
       color: #5d5b8d;

@@ -94,6 +94,8 @@ const Input = () => {
           id="file"
           onChange={(e) => setImg(e.target.files[0])}
         />
+
+        {/* //todo: Prepare file size limiter and message stating maximum available size. */}
         <label htmlFor="file">
           <img src={Img} alt="Image icon" />
         </label>
