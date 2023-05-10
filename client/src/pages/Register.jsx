@@ -71,31 +71,61 @@ const Register = () => {
       // Create a unique image name
       const storageRef = ref(storage, displayName);
 
-      // Upload created user to Firestore database
-      await uploadBytesResumable(storageRef, file).then(() => {
-        getDownloadURL(storageRef).then(async (downloadURL) => {
-          try {
-            // Update user profile with photo
-            await updateProfile(res.user, {
-              displayName,
-              photoURL: downloadURL,
-            });
-            // Create user on firestore database
-            await setDoc(doc(db, "users", res.user.uid), {
-              uid: res.user.uid,
-              displayName,
-              email,
-              photoURL: downloadURL,
-            });
-            // Create user chat collection and navigate to home page
-            await setDoc(doc(db, "userChats", res.user.uid), {});
-            navigate("/");
-          } catch (err) {
-            console.log(err);
-            setErr(true);
-          }
+      if (file === undefined) {
+        // Upload created user to Firestore database
+        await uploadBytesResumable(storageRef, file).then(() => {
+          getDownloadURL(storageRef).then(async (downloadURL) => {
+            try {
+              // Update the authentication side with the user profile photo.
+              await updateProfile(res.user, {
+                displayName,
+                photoURL:
+                  "https://firebasestorage.googleapis.com/v0/b/duochat-10001.appspot.com/o/free_icon_1.svg?alt=media&token=15543478-17a2-49df-80ff-8fed92e4c799",
+              });
+              // Create user on firestore database
+              await setDoc(doc(db, "users", res.user.uid), {
+                uid: res.user.uid,
+                displayName,
+                email,
+                photoURL:
+                  "https://firebasestorage.googleapis.com/v0/b/duochat-10001.appspot.com/o/free_icon_1.svg?alt=media&token=15543478-17a2-49df-80ff-8fed92e4c799",
+              });
+              // Create user chat collection and navigate to home page
+              await setDoc(doc(db, "userChats", res.user.uid), {});
+              navigate("/");
+            } catch (err) {
+              console.log(err);
+              setErr(true);
+            }
+          });
         });
-      });
+      } else {
+        // Upload created user to Firestore database
+        await uploadBytesResumable(storageRef, file).then(() => {
+          getDownloadURL(storageRef).then(async (downloadURL) => {
+            try {
+              // Update user profile with photo
+              await updateProfile(res.user, {
+                displayName,
+                photoURL: downloadURL,
+              });
+              // Create user on firestore database
+              await setDoc(doc(db, "users", res.user.uid), {
+                uid: res.user.uid,
+                displayName,
+                email,
+                photoURL: downloadURL,
+              });
+              // Create user chat collection and navigate to home page
+              await setDoc(doc(db, "userChats", res.user.uid), {});
+              navigate("/");
+            } catch (err) {
+              console.log(err);
+              setErr(true);
+            }
+          });
+        });
+      }
     } catch (err) {
       setErr(true);
     }
