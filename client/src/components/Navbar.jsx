@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="navbar">
       <span className="logo">DuoChat</span>
       <div className="user">
-        <img src={currentUser.photoURL} alt="User profile photo" />
+        <img src={currentUser.photoURL} alt="User" />
         <span>{currentUser.displayName}</span>
       </div>
     </div>
