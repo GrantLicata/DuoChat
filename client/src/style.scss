@@ -245,6 +245,8 @@ $fifth_color: #dcc48e;
           height: 50px;
           border-radius: 50%;
           object-fit: cover;
+          background-color: #ddddf7;
+
           @include tablet {
             height: 28px;
             width: 28px;
