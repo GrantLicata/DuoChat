@@ -181,6 +181,11 @@ $fifth_color: #dcc48e;
           @include tablet {
             display: inline;
           }
+          border-radius: 15%;
+
+          &:hover {
+            background-color: #3e3c61;
+          }
         }
 
         .logo {
