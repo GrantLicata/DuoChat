@@ -142,6 +142,9 @@ $fifth_color: #dcc48e;
       background-color: #2f2d52;
       // overflow-y: auto;
       position: relative;
+      // @include mobile {
+      //   display: none;
+      // }
 
       .logoutButton {
         background-color: #ddddf7;
@@ -168,7 +171,21 @@ $fifth_color: #dcc48e;
         justify-content: space-between;
         color: #ddddf7;
 
+        .menu {
+          height: 28px;
+          width: 28px;
+          display: none;
+          @include mobile {
+            display: inline;
+          }
+          @include tablet {
+            display: inline;
+          }
+        }
+
         .logo {
+          // position: absolute;
+          // margin-left: 34px;
           font-weight: bold;
           @include tablet {
             display: none;
@@ -204,6 +221,7 @@ $fifth_color: #dcc48e;
           }
         }
       }
+
       .search {
         // border-right: 8px solid #2f2d52;
         // border-left: 8px solid #2f2d52;
@@ -230,7 +248,7 @@ $fifth_color: #dcc48e;
       }
 
       .chats {
-        // overflow-y: auto;
+        // overflow-y: visible;
 
         .userChat {
           padding: 10px;
@@ -317,6 +335,18 @@ $fifth_color: #dcc48e;
 
     .chat {
       flex: 2;
+
+      // .menu {
+      //   height: 28px;
+      //   width: 28px;
+      //   display: none;
+      //   @include mobile {
+      //     display: inline;
+      //   }
+      //   @include tablet {
+      //     display: inline;
+      //   }
+      // }
 
       .chatInfo {
         height: 46px;
