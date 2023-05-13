@@ -140,6 +140,7 @@ $fifth_color: #dcc48e;
     .sidebar {
       flex: 0.8;
       background-color: #2f2d52;
+      // overflow-y: auto;
       position: relative;
 
       .logoutButton {
@@ -228,39 +229,44 @@ $fifth_color: #dcc48e;
         }
       }
 
-      .userChat {
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: white;
-        cursor: pointer;
+      .chats {
+        // overflow-y: auto;
 
-        &:hover {
-          background-color: #3e3c61;
-        }
+        .userChat {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: white;
 
-        img {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          object-fit: cover;
-          background-color: #ddddf7;
+          cursor: pointer;
 
-          @include tablet {
-            height: 28px;
-            width: 28px;
+          &:hover {
+            background-color: #3e3c61;
           }
-        }
 
-        .userChatInfo {
-          span {
-            font-size: 18px;
-            font-weight: 500;
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #ddddf7;
+
+            @include tablet {
+              height: 28px;
+              width: 28px;
+            }
           }
-          p {
-            font-size: 14px;
-            color: lightgray;
+
+          .userChatInfo {
+            span {
+              font-size: 18px;
+              font-weight: 500;
+            }
+            p {
+              font-size: 14px;
+              color: lightgray;
+            }
           }
         }
       }
