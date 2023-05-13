@@ -137,6 +137,42 @@ $fifth_color: #dcc48e;
       width: 90%;
     }
 
+    // Minimize the sidebar
+    .sidebar.minimized {
+      width: 2px;
+
+      .logoutButton {
+        display: none;
+      }
+
+      .navbar {
+        .logo {
+          display: none;
+        }
+
+        .user {
+          display: none;
+        }
+      }
+
+      .search {
+        display: none;
+      }
+
+      .chats {
+        .userChat {
+          .userChatInfo {
+            display: none;
+          }
+        }
+      }
+    }
+
+    // Hide the sidebar
+    .sidebar.closed {
+      display: none;
+    }
+
     .sidebar {
       flex: 0.8;
       background-color: #2f2d52;
@@ -341,18 +377,6 @@ $fifth_color: #dcc48e;
     .chat {
       flex: 2;
 
-      // .menu {
-      //   height: 28px;
-      //   width: 28px;
-      //   display: none;
-      //   @include mobile {
-      //     display: inline;
-      //   }
-      //   @include tablet {
-      //     display: inline;
-      //   }
-      // }
-
       .chatInfo {
         height: 46px;
         background-color: #5d5b8d;
@@ -361,6 +385,33 @@ $fifth_color: #dcc48e;
         justify-content: end;
         padding: 2px 15px 2px 10px;
         color: lightgray;
+
+        .menu {
+          display: none;
+        }
+      }
+
+      // Menu present with closed sidebar
+      .chatInfo.sidebarClosed {
+        height: 46px;
+        background-color: #5d5b8d;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2px 15px 2px 10px;
+        color: lightgray;
+
+        .menu {
+          height: 28px;
+          width: 28px;
+          display: none;
+          @include mobile {
+            display: inline;
+          }
+          @include tablet {
+            display: inline;
+          }
+        }
       }
 
       .subjectName {
