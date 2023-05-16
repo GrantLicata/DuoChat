@@ -27,10 +27,12 @@ const Chats = () => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
+  // Switch between chat contexts
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };
 
+  // Create a preview of the most recent message
   const handleTextPreview = (input) => {
     let message = input.lastMessage?.text;
     // return message;

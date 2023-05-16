@@ -6,6 +6,7 @@ const Home = () => {
   // Management of sidebar state
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
+  //todo: Create a context for menu expansion
   return (
     <div className="home">
       <div className="container">
