@@ -61,10 +61,10 @@ const Chats = () => {
             </div>
           </div>
         ))}
-      {/* Sign user out of application */}
+      {/* Sign user out of application
       <button className="logoutButton" onClick={() => signOut(auth)}>
         Logout
-      </button>
+      </button> */}
     </div>
   );
 };
