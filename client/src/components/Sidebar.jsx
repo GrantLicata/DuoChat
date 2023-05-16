@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import Chats from "./Chats";
+import Logout from "./Logout";
 
 const Sidebar = (props) => {
   return (
@@ -12,6 +13,7 @@ const Sidebar = (props) => {
       />
       <Search />
       <Chats />
+      <Logout />
     </div>
   );
 };

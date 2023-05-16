@@ -179,27 +179,10 @@ $fifth_color: #dcc48e;
     .sidebar {
       flex: 0.8;
       background-color: #2f2d52;
-      overflow-y: auto;
       position: relative;
       // @include mobile {
       //   display: none;
       // }
-
-      .logoutButton {
-        background-color: #ddddf7;
-        color: rgb(70, 70, 70);
-        border: none;
-        border-radius: 2px;
-        padding: 10px;
-        position: absolute;
-        bottom: 0;
-        margin-bottom: 10px;
-        margin-left: 10px;
-        cursor: pointer;
-        @include mobile {
-          padding: 8px;
-        }
-      }
 
       .navbar {
         display: flex;
@@ -292,7 +275,7 @@ $fifth_color: #dcc48e;
       }
 
       .chats {
-        // overflow-y: visible;
+        overflow-y: visible;
 
         .userChat {
           padding: 10px;
@@ -329,6 +312,24 @@ $fifth_color: #dcc48e;
               font-size: 14px;
               color: lightgray;
             }
+          }
+        }
+      }
+
+      .logout {
+        .logoutButton {
+          background-color: #ddddf7;
+          color: rgb(70, 70, 70);
+          border: none;
+          border-radius: 2px;
+          padding: 10px;
+          position: absolute;
+          bottom: 0;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          cursor: pointer;
+          @include mobile {
+            padding: 8px;
           }
         }
       }

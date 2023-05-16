@@ -5,7 +5,7 @@ import { auth } from "../firebase";
 const Logout = () => {
   // todo: Styles needed to be arranged for the logout button
   return (
-    <div className="Logout">
+    <div className="logout">
       {/* Sign user out of application */}
       <button className="logoutButton" onClick={() => signOut(auth)}>
         Logout
