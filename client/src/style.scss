@@ -177,9 +177,9 @@ $fifth_color: #dcc48e;
     }
 
     .sidebar {
-      flex: 0.8;
+      // flex: 0.8;
       background-color: #2f2d52;
-      position: relative;
+      // position: relative;
       // @include mobile {
       //   display: none;
       // }
@@ -275,7 +275,8 @@ $fifth_color: #dcc48e;
       }
 
       .chats {
-        overflow-y: visible;
+        // height: auto;
+        overflow-y: auto;
 
         .userChat {
           padding: 10px;
@@ -317,16 +318,22 @@ $fifth_color: #dcc48e;
       }
 
       .logout {
+        //!The width extends beyond the sidebars border for some unknown reason.
+        padding: 10px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
         .logoutButton {
           background-color: #ddddf7;
           color: rgb(70, 70, 70);
           border: none;
           border-radius: 2px;
           padding: 10px;
-          position: absolute;
-          bottom: 0;
-          margin-bottom: 10px;
-          margin-left: 10px;
+          // position: absolute;
+          // bottom: 0;
+          // margin-bottom: 10px;
+          // margin-left: 10px;
           cursor: pointer;
           @include mobile {
             padding: 8px;

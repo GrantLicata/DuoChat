@@ -63,10 +63,6 @@ const Chats = () => {
             </div>
           </div>
         ))}
-      {/* Sign user out of application
-      <button className="logoutButton" onClick={() => signOut(auth)}>
-        Logout
-      </button> */}
     </div>
   );
 };
