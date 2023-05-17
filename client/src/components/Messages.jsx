@@ -28,16 +28,19 @@ const Messages = () => {
   // Store the time in which the page renders initially
   const pageRenderTime = Math.floor(Date.now() / 1000);
   useEffect(() => {
-    //Most recent message time gathered if available
+    //Most recent message time and userID gathered if available
     let mostRecentMessageTime = null;
+    let mostRecentMessageId = null;
     if (messages.length > 0) {
       mostRecentMessageTime = messages[messages.length - 1].date.seconds;
+      mostRecentMessageId = messages[messages.length - 1].senderId;
     }
 
-    //Evaluate if a new message ocurred within a certain range from the initial render
+    //Evaluate if a new message ocurred within a certain range from the initial render and that the user matches the sender
     if (
       pageRenderTime < mostRecentMessageTime + 2 &&
-      pageRenderTime > mostRecentMessageTime - 2
+      pageRenderTime > mostRecentMessageTime - 2 &&
+      data.user.uid === mostRecentMessageId
     ) {
       ping.play();
     }
