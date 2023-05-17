@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Message from "./Message";
 import { ChatContext } from "../context/ChatContext";
-import { doc, onSnapshot } from "firebase/firestore";
+import { Timestamp, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import UIfx from "uifx";
 import mp3File from "../audio/ping.mp3";
@@ -15,7 +15,7 @@ const Messages = () => {
     throttleMs: 100,
   });
 
-  // Messages collected upon initial page load
+  // Messages collected upon page load
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
       doc.exists() && setMessages(doc.data().messages);
@@ -25,18 +25,21 @@ const Messages = () => {
     };
   }, [data.chatId]);
 
-  // Play sound on new message
-  //!Effect running multiple times upon page render
-  const [count, setCount] = useState(0);
-  const initialRender = useRef(true);
+  // Store the time in which the page renders initially
+  const pageRenderTime = Math.floor(Date.now() / 1000);
   useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false;
-    } else {
-      let current = count;
-      setCount(current + 1);
+    //Most recent message time gathered if available
+    let mostRecentMessageTime = null;
+    if (messages.length > 0) {
+      mostRecentMessageTime = messages[messages.length - 1].date.seconds;
+    }
+
+    //Evaluate if a new message ocurred within a certain range from the initial render
+    if (
+      pageRenderTime < mostRecentMessageTime + 2 &&
+      pageRenderTime > mostRecentMessageTime - 2
+    ) {
       ping.play();
-      console.log("Ping count is ", count);
     }
   }, [messages]);
 
