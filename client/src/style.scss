@@ -177,12 +177,27 @@ $fifth_color: #dcc48e;
     }
 
     .sidebar {
-      // flex: 0.8;
+      flex: 0.8;
       background-color: #2f2d52;
-      // position: relative;
-      // @include mobile {
-      //   display: none;
-      // }
+      display: flex;
+      flex-direction: column;
+      // background-color: white;
+      // overflow-y: auto;
+      justify-content: space-between;
+      position: relative;
+
+      .flexChat {
+        // overflow-y: auto;
+        overflow: hidden;
+        // max-height: 100px;
+        display: block;
+      }
+
+      .searchNavChats {
+        .flexChat {
+          // overflow-y: auto;
+        }
+      }
 
       .navbar {
         display: flex;
@@ -275,9 +290,6 @@ $fifth_color: #dcc48e;
       }
 
       .chats {
-        // height: auto;
-        overflow-y: auto;
-
         .userChat {
           padding: 10px;
           display: flex;
@@ -318,11 +330,11 @@ $fifth_color: #dcc48e;
       }
 
       .logout {
-        //!The width extends beyond the sidebars border for some unknown reason.
         padding: 10px;
-        position: absolute;
         bottom: 0;
-        width: 100%;
+        vertical-align: bottom;
+        display: block;
+        position: absolute;
 
         .logoutButton {
           background-color: #ddddf7;
