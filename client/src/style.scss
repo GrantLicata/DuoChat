@@ -179,25 +179,7 @@ $fifth_color: #dcc48e;
     .sidebar {
       flex: 0.8;
       background-color: #2f2d52;
-      // display: flex;
-      // flex-direction: column;
-      // background-color: white;
-      // overflow-y: auto;
-      // justify-content: space-between;
       position: relative;
-
-      .flexChat {
-        // overflow-y: auto;
-        overflow: hidden;
-        // max-height: 100px;
-        display: block;
-      }
-
-      .searchNavChats {
-        .flexChat {
-          // overflow-y: auto;
-        }
-      }
 
       .navbar {
         display: flex;
@@ -265,8 +247,6 @@ $fifth_color: #dcc48e;
       }
 
       .search {
-        // border-right: 8px solid #2f2d52;
-        // border-left: 8px solid #2f2d52;
         margin-right: 8px;
         margin-left: 8px;
         margin-bottom: 5px;
@@ -290,6 +270,9 @@ $fifth_color: #dcc48e;
       }
 
       .chats {
+        height: calc(100% - 145px);
+        overflow: auto;
+
         .userChat {
           padding: 10px;
           display: flex;
