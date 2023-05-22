@@ -7,19 +7,13 @@ import Logout from "./Logout";
 const Sidebar = (props) => {
   return (
     <div className={props.isSidebarExpanded ? "sidebar" : "sidebar closed"}>
-      <div className="searchNavChats">
-        <Navbar
-          isSidebarExpanded={props.isSidebarExpanded}
-          setIsSidebarExpanded={props.setIsSidebarExpanded}
-        />
-        <Search />
-        <div className="flexChat">
-          <Chats />
-        </div>
-      </div>
-      <div>
-        <Logout />
-      </div>
+      <Navbar
+        isSidebarExpanded={props.isSidebarExpanded}
+        setIsSidebarExpanded={props.setIsSidebarExpanded}
+      />
+      <Search />
+      <Chats />
+      <Logout />
     </div>
   );
 };
