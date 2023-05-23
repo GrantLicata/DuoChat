@@ -31,16 +31,16 @@ const Login = () => {
   };
 
   //Todo - Future Google Auth functionality
-  // async function signIn() {
-  //   // Sign in Firebase using popup auth and Google as the identity provider.
-  //   let provider = new GoogleAuthProvider();
-  //   try {
-  //     await signInWithPopup(getAuth(), provider);
-  //     navigate("/");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  async function signIn() {
+    // Sign in Firebase using popup auth and Google as the identity provider.
+    let provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(getAuth(), provider);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="formContainer">
@@ -58,7 +58,7 @@ const Login = () => {
             </span>
           )}
         </form>
-        {/* <button onClick={signIn}>Continue with Google</button> */}
+        <button onClick={signIn}>Continue with Google</button>
         <p>
           Don't have an account? <Link to="/register">Register</Link>
         </p>

@@ -4,6 +4,9 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
 
+//Authentication emulator import
+// import { connectAuthEmulator } from "firebase/auth";
+
 //Configure application
 const firebaseConfig = {
   apiKey: "AIzaSyDYYA_vyfJ0iHqbEZwzqROz44g7l_gqep4",
@@ -24,3 +27,6 @@ const analytics = getAnalytics(app);
 
 // Initialize Firestore database
 export const db = getFirestore(app);
+
+// Authentication emulator for testing
+// connectAuthEmulator(auth, "http://localhost:9099");
