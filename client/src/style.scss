@@ -273,12 +273,20 @@ $fifth_color: #dcc48e;
         height: calc(100% - 145px);
         overflow: auto;
 
-        // ! Modification of the scroll bar via webkit isn't working
-        // .chats::-webkit-scrollbar-track {
-        //   box-shadow: inset 0 0 5px grey;
-        //   border-radius: 10px;
-        //   background-color: blue;
-        // }
+        //Scroll bar styling
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: darkgrey;
+          outline: 1px solid slategrey;
+          border-radius: 10px;
+        }
 
         .userChat {
           padding: 10px;
