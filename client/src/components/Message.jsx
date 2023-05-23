@@ -10,8 +10,7 @@ const Message = ({ message }) => {
   // Generate timestamp to be placed with each message
   const messageDate =
     message.date.toDate().toLocaleTimeString().slice(0, 4) +
-    " " +
-    message.date.toDate().toLocaleTimeString().slice(7, 10);
+    message.date.toDate().toLocaleTimeString().slice(7, 11);
 
   // Reference hook brought into the application for auto scroll
   const ref = useRef();

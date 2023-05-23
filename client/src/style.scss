@@ -398,6 +398,10 @@ $fifth_color: #dcc48e;
     .chat {
       flex: 2;
 
+      @include mobile {
+        // display: none;
+      }
+
       .chatInfo {
         height: 46px;
         background-color: #5d5b8d;
