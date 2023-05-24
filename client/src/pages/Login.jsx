@@ -30,7 +30,7 @@ const Login = () => {
     }
   };
 
-  //Todo - Future Google Auth functionality
+  //Todo - Explore non-popup SignIn option.
   async function signIn() {
     // Sign in Firebase using popup auth and Google as the identity provider.
     let provider = new GoogleAuthProvider();
@@ -50,7 +50,7 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
-          <button>Sign in</button>
+          <button>Sign in with Email</button>
           {/* If error occurs then present that error to the DOM */}
           {error && (
             <span style={{ textAlign: "center", color: "red" }}>
@@ -58,7 +58,9 @@ const Login = () => {
             </span>
           )}
         </form>
-        <button onClick={signIn}>Continue with Google</button>
+        <button onClick={signIn} className="googleButton">
+          Continue with Google
+        </button>
         <p>
           Don't have an account? <Link to="/register">Register</Link>
         </p>

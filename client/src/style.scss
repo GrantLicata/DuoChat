@@ -44,6 +44,16 @@ $fifth_color: #dcc48e;
     gap: 10px;
     align-items: center;
 
+    button {
+      background-color: #e6847d;
+      width: 280px;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
     .logo {
       // color: #5d5b8d;
       // font-weight: bold;
