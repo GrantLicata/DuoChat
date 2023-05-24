@@ -30,7 +30,6 @@ const Login = () => {
     }
   };
 
-  //Todo - Explore non-popup SignIn option.
   async function signIn() {
     // Sign in Firebase using popup auth and Google as the identity provider.
     let provider = new GoogleAuthProvider();
@@ -51,16 +50,16 @@ const Login = () => {
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
           <button>Sign in with Email</button>
-          {/* If error occurs then present that error to the DOM */}
-          {error && (
-            <span style={{ textAlign: "center", color: "red" }}>
-              Something went wrong
-            </span>
-          )}
         </form>
         <button onClick={signIn} className="googleButton">
           Continue with Google
         </button>
+        {/* If error occurs then present that error to the DOM */}
+        {error && (
+          <span style={{ textAlign: "center", color: "red" }}>
+            Something went wrong
+          </span>
+        )}
         <p>
           Don't have an account? <Link to="/register">Register</Link>
         </p>

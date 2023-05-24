@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import Add from "../img/addAvatar.png";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
 import { auth, storage, db } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
@@ -14,47 +20,6 @@ const Register = () => {
   const [errorMsg, setErrorMsg] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
-
-  // Handle file state population for eventual submission
-  // const handleFile = (event) => {
-  //   //! This isn't working. Somehow the image file isn't being added to state.
-  //   console.log(event.target.files[0]);
-  //   if (event.target.files) {
-  //     setSelectedFile(event.target.files[0]);
-  //   }
-  //   validateSelectedFile();
-  // };
-
-  // Validate the file size before submission
-  // const validateSelectedFile = () => {
-  //   const MIN_FILE_SIZE = 1024; // 1MB
-  //   const MAX_FILE_SIZE = 5120; // 5MB
-
-  //   console.log("Image file result", selectedFile);
-
-  //   if (!selectedFile) {
-  //     setErrorMsg("Please choose a file");
-  //     setIsSuccess(false);
-  //     return;
-  //   }
-
-  //   const fileSizeKiloBytes = selectedFile.size / 1024;
-  //   console.log("Image file size", fileSizeKiloBytes);
-
-  //   if (fileSizeKiloBytes < MIN_FILE_SIZE) {
-  //     setErrorMsg("File size is less than minimum limit");
-  //     setIsSuccess(false);
-  //     return;
-  //   }
-  //   if (fileSizeKiloBytes > MAX_FILE_SIZE) {
-  //     setErrorMsg("File size is greater than maximum limit");
-  //     setIsSuccess(false);
-  //     return;
-  //   }
-
-  //   setErrorMsg("");
-  //   setIsSuccess(true);
-  // };
 
   // Submission of user information for registration
   const handleSubmit = async (e) => {
@@ -131,6 +96,17 @@ const Register = () => {
     }
   };
 
+  async function signIn() {
+    // Sign in Firebase using popup auth and Google as the identity provider.
+    let provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(getAuth(), provider);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="formContainer">
       <div className="formWrapper">
@@ -161,6 +137,10 @@ const Register = () => {
           {/* If error occurs then present that error to the DOM */}
           {err && <span>Something went wrong</span>}
         </form>
+        <span className="title">or</span>
+        <button onClick={signIn} className="googleButton">
+          Continue with Google
+        </button>
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
