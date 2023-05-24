@@ -10,7 +10,8 @@ DuoChat is a cloud-enabled, mobile-ready, real-time chat application, built to h
 - Real time chat
 - Timestamped messages
 - Audible notificaitons
-- Mobile friendly!
+- Mobile friendly
+- Multiple sign-in methods
 
 DuoChat was built as a learning oppportunity. It makes use of both code snippets found throughout the internet as well as novel code. The applicaiton will change over time as improvement opportunities are identified. 
 
