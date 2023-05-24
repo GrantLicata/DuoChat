@@ -36,7 +36,7 @@ const Message = ({ message }) => {
         <span>{messageDate}</span>
       </div>
       <div className="messageContent">
-        <p>{message.text}</p>
+        {message.text.length > 0 ? <p>message.text</p> : null}
         {/* If message image present, then show image */}
         {message.img && <img src={message.img} alt="Message image" />}
       </div>
