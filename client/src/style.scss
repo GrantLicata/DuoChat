@@ -152,36 +152,6 @@ $fifth_color: #dcc48e;
       height: 100%;
     }
 
-    // Minimize the sidebar
-    .sidebar.minimized {
-      .logoutButton {
-        display: none;
-      }
-
-      .navbar {
-        .logo {
-          display: none;
-        }
-
-        .user {
-          display: none;
-        }
-      }
-
-      .search {
-        display: none;
-      }
-
-      .chats {
-        .userChat {
-          .userChatInfo {
-            display: none;
-          }
-        }
-      }
-    }
-
-    // Hide the sidebar
     .sidebar.closed {
       display: none;
     }
@@ -190,6 +160,10 @@ $fifth_color: #dcc48e;
       flex: 0.8;
       background-color: #2f2d52;
       position: relative;
+
+      @include mobile {
+        flex: 1;
+      }
 
       .navbar {
         display: flex;
@@ -408,10 +382,6 @@ $fifth_color: #dcc48e;
     .chat {
       flex: 2;
 
-      @include mobile {
-        // display: none;
-      }
-
       .chatInfo {
         height: 46px;
         background-color: #5d5b8d;
@@ -588,6 +558,12 @@ $fifth_color: #dcc48e;
             cursor: pointer;
           }
         }
+      }
+    }
+
+    .chat.closed {
+      @include mobile {
+        display: none;
       }
     }
   }
