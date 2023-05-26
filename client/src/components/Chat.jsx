@@ -22,7 +22,7 @@ const Chat = (props) => {
   };
 
   return (
-    <div className="chat">
+    <div className={props.isSidebarExpanded ? "chat closed" : "chat"}>
       <div
         className={
           props.isSidebarExpanded ? "chatInfo" : "chatInfo sidebarClosed"

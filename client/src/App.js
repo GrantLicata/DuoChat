@@ -1,6 +1,7 @@
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Settings from "./pages/Settings";
 import "./style.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
@@ -35,6 +36,9 @@ function App() {
 
           {/* User Login page */}
           <Route path="login" element={<Login />} />
+
+          {/* Settings page */}
+          <Route path="settings" element={<Settings />} />
 
           {/* User registration page */}
           <Route path="register" element={<Register />} />
