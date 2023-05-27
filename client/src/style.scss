@@ -273,16 +273,20 @@ $fifth_color: #dcc48e;
         }
 
         .userChat {
-          padding: 10px;
           display: flex;
-          align-items: center;
-          gap: 10px;
+          justify-content: space-between;
           color: white;
-
           cursor: pointer;
 
           &:hover {
             background-color: #3e3c61;
+          }
+
+          .userDetails {
+            padding: 10px;
+            gap: 10px;
+            display: flex;
+            align-items: center;
           }
 
           img {
@@ -307,6 +311,28 @@ $fifth_color: #dcc48e;
               font-size: 14px;
               color: lightgray;
             }
+          }
+
+          button {
+            background-color: #ffffff00;
+            border: none;
+          }
+
+          button:hover {
+            background-color: #a4a4a486;
+            border: none;
+          }
+
+          .trash {
+            background-color: rgba(200, 200, 200, 0);
+            border-radius: 0%;
+            width: 25px;
+            height: auto;
+            padding: 5px;
+            cursor: pointer;
+
+            filter: invert(100%) sepia(1%) saturate(0%) hue-rotate(199deg)
+              brightness(105%) contrast(101%);
           }
         }
       }

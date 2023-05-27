@@ -12,7 +12,10 @@ const Sidebar = (props) => {
         setIsSidebarExpanded={props.setIsSidebarExpanded}
       />
       <Search />
-      <Chats />
+      <Chats
+        isSidebarExpanded={props.isSidebarExpanded}
+        setIsSidebarExpanded={props.setIsSidebarExpanded}
+      />
       <Logout />
     </div>
   );

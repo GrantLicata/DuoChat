@@ -1,8 +1,9 @@
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot, deleteField, updateDoc } from "firebase/firestore";
 import React, { useState, useEffect, useContext } from "react";
 import { auth, db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+import Trash from "../img/trash.png";
 import { signOut } from "firebase/auth";
 
 const Chats = () => {
@@ -17,6 +18,7 @@ const Chats = () => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         setChats(doc.data());
+        console.log(chats);
       });
       return () => {
         unsub();
@@ -28,8 +30,9 @@ const Chats = () => {
   }, [currentUser.uid]);
 
   // Switch between chat contexts
-  const handleSelect = (u) => {
-    dispatch({ type: "CHANGE_USER", payload: u });
+  const handleSelect = (user) => {
+    dispatch({ type: "CHANGE_USER", payload: user });
+    console.log("These are the chats", chats);
   };
 
   // Create a preview of the most recent message
@@ -45,6 +48,20 @@ const Chats = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    console.log("id", id);
+    const userRef = doc(db, "userChats", currentUser.uid);
+    // console.log("User reference", userRef);
+    // await updateDoc(userRef, {
+    //   id: deleteField(),
+    // });
+
+    // Testing out an archive option to bypass deletion issues
+    await updateDoc(userRef, {
+      archived: true,
+    });
+  };
+
   return (
     <div className="chats">
       {/* Build chat list within sidebar */}
@@ -54,13 +71,21 @@ const Chats = () => {
           <div
             className="userChat"
             key={chat[0]}
-            onClick={() => handleSelect(chat[1].userInfo)}
+            onClick={() => {
+              handleSelect(chat[1].userInfo);
+              console.log("Chat debug", chat);
+            }}
           >
-            <img src={chat[1].userInfo.photoURL} alt="User profile image" />
-            <div className="userChatInfo">
-              <span>{chat[1].userInfo.displayName}</span>
-              <p>{handleTextPreview(chat[1])}</p>
+            <div className="userDetails">
+              <img src={chat[1].userInfo.photoURL} alt="User profile image" />
+              <div className="userChatInfo">
+                <span>{chat[1].userInfo.displayName}</span>
+                <p>{handleTextPreview(chat[1])}</p>
+              </div>
             </div>
+            <button onClick={() => handleDelete(chat[0])}>
+              <img className="trash" src={Trash} />
+            </button>
           </div>
         ))}
     </div>
