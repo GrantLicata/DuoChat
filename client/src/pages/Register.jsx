@@ -96,11 +96,36 @@ const Register = () => {
     }
   };
 
+  // Registration using a users Google account
   async function signIn() {
     // Sign in Firebase using popup auth and Google as the identity provider.
     let provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(getAuth(), provider);
+      const res = await signInWithPopup(getAuth(), provider);
+
+      const displayName = res.user.displayName;
+      const email = res.user.email;
+      const uid = res.user.uid;
+
+      console.log(displayName, email, uid);
+      console.log("Google authentication response", res);
+      //----------------------------
+
+      //!In Development to fix Google authentication issue for new users
+      // Create user on firestore database
+      await setDoc(doc(db, "users", res.user.uid), {
+        uid: res.user.uid,
+        displayName,
+        email,
+        photoURL:
+          "https://firebasestorage.googleapis.com/v0/b/duochat-10001.appspot.com/o/free_icon_1.svg?alt=media&token=15543478-17a2-49df-80ff-8fed92e4c799",
+      });
+      // Create user chat collection
+      await setDoc(doc(db, "userChats", res.user.uid), {});
+
+      //-----------------------------
+
+      // Navigate to the home screen
       navigate("/");
     } catch (error) {
       console.log(error);
