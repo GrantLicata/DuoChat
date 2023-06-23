@@ -18,7 +18,6 @@ const Chats = () => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         setChats(doc.data());
-        console.log(chats);
       });
       return () => {
         unsub();
@@ -48,19 +47,20 @@ const Chats = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    console.log("id", id);
-    const userRef = doc(db, "userChats", currentUser.uid);
-    // console.log("User reference", userRef);
-    // await updateDoc(userRef, {
-    //   id: deleteField(),
-    // });
+  //TODO - Delete functionality to be built at a next stage
+  // const handleDelete = async (id) => {
+  //   console.log("id", id);
+  //   const userRef = doc(db, "userChats", currentUser.uid);
+  //   // console.log("User reference", userRef);
+  //   // await updateDoc(userRef, {
+  //   //   id: deleteField(),
+  //   // });
 
-    // Testing out an archive option to bypass deletion issues
-    await updateDoc(userRef, {
-      archived: true,
-    });
-  };
+  //   // Testing out an archive option to bypass deletion issues
+  //   await updateDoc(userRef, {
+  //     archived: true,
+  //   });
+  // };
 
   return (
     <div className="chats">
@@ -83,9 +83,9 @@ const Chats = () => {
                 <p>{handleTextPreview(chat[1])}</p>
               </div>
             </div>
-            <button onClick={() => handleDelete(chat[0])}>
+            {/* <button onClick={() => handleDelete(chat[0])}>
               <img className="trash" src={Trash} />
-            </button>
+            </button> */}
           </div>
         ))}
     </div>
