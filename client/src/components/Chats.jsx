@@ -47,7 +47,7 @@ const Chats = () => {
     }
   };
 
-  //TODO - Delete functionality to be built at a next stage
+  //TODO - Delete functionality to be built at a later stage
   // const handleDelete = async (id) => {
   //   console.log("id", id);
   //   const userRef = doc(db, "userChats", currentUser.uid);

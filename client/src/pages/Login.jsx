@@ -30,16 +30,16 @@ const Login = () => {
     }
   };
 
-  async function signIn() {
-    // Sign in Firebase using popup auth and Google as the identity provider.
-    let provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(getAuth(), provider);
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function signIn() {
+  //   // Sign in Firebase using popup auth and Google as the identity provider.
+  //   let provider = new GoogleAuthProvider();
+  //   try {
+  //     await signInWithPopup(getAuth(), provider);
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   return (
     <div className="formContainer">
@@ -51,9 +51,9 @@ const Login = () => {
           <input type="password" placeholder="password" />
           <button>Sign in with Email</button>
         </form>
-        <button onClick={signIn} className="googleButton">
+        {/* <button onClick={signIn} className="googleButton">
           Continue with Google
-        </button>
+        </button> */}
         {/* If error occurs then present that error to the DOM */}
         {error && (
           <span style={{ textAlign: "center", color: "red" }}>

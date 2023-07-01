@@ -141,7 +141,6 @@ const Register = () => {
           <input type="text" placeholder="display name" />
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
-          {/* //todo: Create password validation */}
           <input
             style={{ display: "none" }}
             // onChange={handleFile}
@@ -162,10 +161,10 @@ const Register = () => {
           {/* If error occurs then present that error to the DOM */}
           {err && <span>Something went wrong</span>}
         </form>
-        <span className="title">or</span>
-        <button onClick={signIn} className="googleButton">
+        {/* <span className="title">or</span> */}
+        {/* <button onClick={signIn} className="googleButton">
           Continue with Google
-        </button>
+        </button> */}
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
